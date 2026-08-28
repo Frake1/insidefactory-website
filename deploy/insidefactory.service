@@ -1,0 +1,15 @@
+[Unit]
+Description=Inside Factory Next.js website
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/insidefactory
+EnvironmentFile=/root/insidefactory/.env.local
+ExecStart=/usr/bin/npm start -- -p 3005
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
