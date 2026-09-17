@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --bg: #0a0a0a;
-  --bg-soft: #121212;
-  --steel: #c5ccd6;
-  --steel-bright: #e8ecf1;
-  --steel-muted: #8b939e;
-  --line: rgba(197, 204, 214, 0.14);
+  --bg: #f3f5f7;
+  --bg-soft: #ffffff;
+  --ink: #14181f;
+  --ink-muted: #5a6573;
+  --accent: #1a4a57;
+  --line: rgba(20, 24, 31, 0.1);
 }
 
 html {
@@ -18,7 +18,7 @@ html {
 
 body {
   background: var(--bg);
-  color: var(--steel-bright);
+  color: var(--ink);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
@@ -27,8 +27,140 @@ body {
 }
 
 ::selection {
-  background: rgba(197, 204, 214, 0.28);
-  color: #fff;
+  background: rgba(26, 74, 87, 0.18);
+  color: #14181f;
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex min-h-[3rem] items-center justify-center bg-accent px-7 py-3.5 text-[0.7rem] font-medium uppercase tracking-wide text-white shadow-btn transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-accent-hover hover:shadow-btn-hover active:translate-y-0 active:shadow-btn;
+  }
+
+  .btn-secondary {
+    @apply inline-flex min-h-[3rem] items-center justify-center border border-line-strong bg-surface px-7 py-3.5 text-[0.7rem] font-medium uppercase tracking-wide text-ink shadow-btn transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-accent hover:text-accent hover:shadow-btn-hover active:translate-y-0 active:shadow-btn;
+  }
+
+  .btn-ghost {
+    @apply inline-flex min-h-[2.75rem] items-center text-sm font-medium text-accent transition-colors hover:text-accent-hover;
+  }
+
+  .btn-on-media {
+    @apply inline-flex min-h-[3rem] items-center justify-center border border-white/55 bg-white/10 px-7 py-3.5 text-[0.7rem] font-medium uppercase tracking-wide text-white shadow-btn backdrop-blur-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-white hover:bg-white/20 hover:shadow-btn-hover active:translate-y-0;
+  }
+
+  .btn-on-media-solid {
+    @apply inline-flex min-h-[3rem] items-center justify-center bg-white px-7 py-3.5 text-[0.7rem] font-medium uppercase tracking-wide text-ink shadow-btn transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-accent-soft hover:shadow-btn-hover active:translate-y-0;
+  }
+
+  .eyebrow {
+    @apply text-[0.65rem] font-medium uppercase tracking-wide text-ink-faint;
+  }
+
+  .panel {
+    @apply border border-line bg-surface shadow-float;
+  }
+
+  .panel-interactive {
+    @apply border border-line bg-surface shadow-float transition-all duration-300 ease-out hover:-translate-y-1 hover:border-line-strong hover:shadow-float-hover;
+  }
+
+  .card-lift {
+    @apply shadow-float transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-float-hover;
+  }
+
+  .section-float {
+    @apply relative isolate overflow-hidden border border-line bg-surface shadow-float;
+  }
+
+  .section-float-pad {
+    @apply p-6 sm:p-8 lg:p-10 xl:p-12;
+  }
+
+  .section-shell {
+    @apply bg-paper px-4 py-8 sm:px-6 sm:py-10 lg:px-10 lg:py-12;
+  }
+
+  .spec-chip {
+    @apply border border-line bg-surface px-3 py-1.5 text-[0.7rem] font-medium uppercase tracking-wide text-ink-muted shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-soft;
+  }
+
+  /* Image overlays — denser where copy sits */
+  .media-scrim-hero {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        to top,
+        rgba(8, 12, 18, 0.92) 0%,
+        rgba(8, 12, 18, 0.72) 28%,
+        rgba(8, 12, 18, 0.42) 55%,
+        rgba(8, 12, 18, 0.28) 100%
+      );
+  }
+
+  .media-scrim-page {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(8, 12, 18, 0.78) 0%,
+        rgba(8, 12, 18, 0.58) 42%,
+        rgba(243, 245, 247, 0.92) 88%,
+        #f3f5f7 100%
+      );
+  }
+
+  .media-scrim-card {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        to top,
+        rgba(8, 12, 18, 0.92) 0%,
+        rgba(8, 12, 18, 0.68) 38%,
+        rgba(8, 12, 18, 0.22) 70%,
+        rgba(8, 12, 18, 0.08) 100%
+      );
+  }
+
+  .media-scrim-cta {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        to top,
+        rgba(8, 12, 18, 0.88) 0%,
+        rgba(8, 12, 18, 0.72) 45%,
+        rgba(8, 12, 18, 0.55) 100%
+      );
+  }
+
+  /* Readable white type over photography */
+  .on-media {
+    color: #fff;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.55),
+      0 6px 20px rgba(0, 0, 0, 0.35);
+  }
+
+  .on-media-muted {
+    color: rgba(255, 255, 255, 0.92);
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.5),
+      0 4px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  .on-media-soft {
+    color: rgba(255, 255, 255, 0.82);
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.45),
+      0 4px 14px rgba(0, 0, 0, 0.28);
+  }
 }
 
 @layer utilities {
@@ -45,17 +177,18 @@ body {
     pointer-events: none;
     position: absolute;
     inset: 0;
-    opacity: 0.035;
+    z-index: 1;
+    opacity: 0.025;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    mix-blend-mode: overlay;
+    mix-blend-mode: multiply;
   }
 
   .reveal {
     opacity: 0;
-    transform: translateY(28px);
+    transform: translateY(24px);
     transition:
-      opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+      opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .reveal.is-visible {
@@ -64,24 +197,15 @@ body {
   }
 
   .reveal-delay-1 {
-    transition-delay: 0.12s;
+    transition-delay: 0.1s;
   }
 
   .reveal-delay-2 {
-    transition-delay: 0.24s;
+    transition-delay: 0.2s;
   }
 
   .reveal-delay-3 {
-    transition-delay: 0.36s;
-  }
-
-  .line-steel {
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(197, 204, 214, 0.45),
-      transparent
-    );
+    transition-delay: 0.3s;
   }
 
   .touch-target {
@@ -90,19 +214,40 @@ body {
   }
 
   .page-hero-title {
-    @apply font-display text-3xl font-medium tracking-tight text-steel-bright sm:text-4xl md:text-5xl lg:text-6xl;
+    @apply font-display text-3xl font-medium tracking-tight text-ink sm:text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  .page-hero-title-on-dark {
+    @apply font-display text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl lg:text-6xl;
+    color: #fff;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.55),
+      0 8px 28px rgba(0, 0, 0, 0.4);
   }
 
   .section-heading {
-    @apply font-display text-3xl font-medium tracking-tight text-steel-bright sm:text-4xl md:text-5xl;
+    @apply font-display text-3xl font-medium tracking-tight text-ink sm:text-4xl md:text-5xl;
   }
 
   .section-pad {
-    @apply px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-32;
+    @apply px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-28;
   }
 
   .section-pad-tight {
-    @apply px-4 py-12 sm:px-6 sm:py-16 lg:px-10 lg:py-24;
+    @apply px-4 py-12 sm:px-6 sm:py-16 lg:px-10 lg:py-20;
+  }
+
+  .prose-detail {
+    @apply text-sm font-light leading-relaxed text-ink-muted sm:text-base;
+  }
+
+  .list-rule {
+    @apply flex items-start gap-3 text-sm text-ink-muted;
+  }
+
+  .list-rule::before {
+    content: "";
+    @apply mt-2.5 h-px w-5 shrink-0 bg-accent/50;
   }
 }
 
@@ -111,14 +256,14 @@ body {
     transform: scale(1);
   }
   to {
-    transform: scale(1.08);
+    transform: scale(1.06);
   }
 }
 
 @keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
@@ -140,6 +285,26 @@ body {
     transform: none;
     transition: none;
   }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-on-media,
+  .btn-on-media-solid,
+  .panel-interactive,
+  .card-lift,
+  .spec-chip {
+    transition: none;
+  }
+
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  .btn-on-media:hover,
+  .btn-on-media-solid:hover,
+  .panel-interactive:hover,
+  .card-lift:hover,
+  .spec-chip:hover {
+    transform: none;
+  }
 }
 
 @media (max-width: 767px) {
@@ -149,9 +314,9 @@ body {
 }
 
 .hero-copy {
-  animation: fade-in 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+  animation: fade-in 1s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
 }
 
 .hero-brand {
-  animation: fade-in 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: fade-in 1s cubic-bezier(0.22, 1, 0.36, 1) both;
 }

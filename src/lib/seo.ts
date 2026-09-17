@@ -137,7 +137,7 @@ export async function faqJsonLd(locale: Locale) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [1, 2, 3, 4, 5, 6].map((n) => ({
+    mainEntity: [1, 2, 3, 4, 5, 6, 7, 8].map((n) => ({
       "@type": "Question",
       name: t(`faq${n}Q`),
       acceptedAnswer: {

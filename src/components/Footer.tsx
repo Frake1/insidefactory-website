@@ -27,42 +27,38 @@ export async function Footer() {
   ];
 
   return (
-    <footer className="border-t border-steel/10 bg-ink-soft">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:grid-cols-2 sm:gap-12 sm:px-6 sm:py-16 lg:grid-cols-4 lg:px-10">
+    <footer className="border-t border-line bg-surface">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:grid-cols-2 sm:gap-12 sm:px-6 sm:py-16 lg:grid-cols-4 lg:px-10">
         <div className="sm:col-span-2 lg:col-span-1">
           <Image
             src={assetPath(siteConfig.logo)}
             alt="Inside Factory"
             width={220}
             height={180}
-            className="mb-6 h-[4.5rem] w-auto object-contain sm:h-20"
+            className="mb-6 h-[4.5rem] w-auto object-contain brightness-0 sm:h-20"
           />
-          <p className="max-w-sm text-sm leading-relaxed text-steel-muted">
-            <strong className="font-medium text-steel">Inside Factory</strong> —{" "}
+          <p className="max-w-sm text-sm leading-relaxed text-ink-muted">
+            <strong className="font-semibold text-ink">Inside Factory</strong> —{" "}
             {t("blurb")}
           </p>
         </div>
 
         <div>
-          <p className="mb-4 font-sans text-[0.65rem] uppercase tracking-wide text-steel-dim">
-            {t("servicesHeading")}
-          </p>
-          <ul className="space-y-3 text-sm text-steel-muted">
+          <p className="eyebrow mb-4">{t("servicesHeading")}</p>
+          <ul className="space-y-3 text-sm text-ink-muted">
             {primaryLinks.map((link) => (
               <li key={link.label}>
-                <Link href={link.href} className="transition-colors hover:text-steel-bright">
+                <Link href={link.href} className="transition-colors hover:text-accent">
                   {link.label}
                 </Link>
               </li>
             ))}
           </ul>
-          <p className="mb-3 mt-8 font-sans text-[0.65rem] uppercase tracking-wide text-steel-dim">
-            {t("secondaryHeading")}
-          </p>
-          <ul className="space-y-3 text-sm text-steel-muted">
+          <p className="eyebrow mb-3 mt-8">{t("secondaryHeading")}</p>
+          <ul className="space-y-3 text-sm text-ink-muted">
             {secondaryLinks.map((link) => (
               <li key={link.label}>
-                <Link href={link.href} className="transition-colors hover:text-steel-bright">
+                <Link href={link.href} className="transition-colors hover:text-accent">
                   {link.label}
                 </Link>
               </li>
@@ -71,13 +67,11 @@ export async function Footer() {
         </div>
 
         <div>
-          <p className="mb-4 font-sans text-[0.65rem] uppercase tracking-wide text-steel-dim">
-            {t("aboutHeading")}
-          </p>
-          <ul className="space-y-3 text-sm text-steel-muted">
+          <p className="eyebrow mb-4">{t("aboutHeading")}</p>
+          <ul className="space-y-3 text-sm text-ink-muted">
             {aboutLinks.map((link) => (
               <li key={link.label}>
-                <Link href={link.href} className="transition-colors hover:text-steel-bright">
+                <Link href={link.href} className="transition-colors hover:text-accent">
                   {link.label}
                 </Link>
               </li>
@@ -86,15 +80,13 @@ export async function Footer() {
         </div>
 
         <div>
-          <p className="mb-4 font-sans text-[0.65rem] uppercase tracking-wide text-steel-dim">
-            {t("contactHeading")}
-          </p>
-          <ul className="space-y-3 text-sm text-steel-muted">
+          <p className="eyebrow mb-4">{t("contactHeading")}</p>
+          <ul className="space-y-3 text-sm text-ink-muted">
             <li>{t("area")}</li>
             <li>
               <a
                 href={`tel:${siteConfig.phone}`}
-                className="transition-colors hover:text-steel-bright"
+                className="font-medium text-ink transition-colors hover:text-accent"
               >
                 {siteConfig.phoneDisplay}
               </a>
@@ -102,7 +94,7 @@ export async function Footer() {
             <li>
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="break-all transition-colors hover:text-steel-bright"
+                className="break-all transition-colors hover:text-accent"
               >
                 {siteConfig.email}
               </a>
@@ -110,15 +102,13 @@ export async function Footer() {
             <li>{t("response")}</li>
           </ul>
           <div className="mt-6 hidden lg:block">
-            <p className="mb-2 text-[0.65rem] uppercase tracking-wide text-steel-dim">
-              {t("language")}
-            </p>
+            <p className="eyebrow mb-2">{t("language")}</p>
             <LanguageSwitcher />
           </div>
         </div>
       </div>
 
-      <div className="border-t border-steel/10 px-4 py-6 text-center text-[0.7rem] leading-relaxed tracking-wide text-steel-dim sm:px-6 lg:px-10">
+      <div className="border-t border-line bg-paper px-4 py-6 text-center text-[0.7rem] leading-relaxed tracking-wide text-ink-faint sm:px-6 lg:px-10">
         © {new Date().getFullYear()} Inside Factory — {t("copyright")}
       </div>
     </footer>

@@ -23,63 +23,59 @@ export default function ContactPage() {
             src={assetPath("/images/espace-2.jpg")}
             alt=""
             fill
-            className="object-cover opacity-20"
+            className="object-cover"
             priority
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-ink via-ink/92 to-ink" />
+          <div className="media-scrim-page" />
         </div>
-        <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-10 lg:py-28">
-          <p className="mb-3 text-[0.65rem] uppercase tracking-wide text-steel-dim sm:mb-4">
+        <div className="relative z-[1] mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-10 lg:py-28">
+          <p className="on-media-soft mb-3 text-[0.65rem] font-medium uppercase tracking-wide sm:mb-4">
             {t("eyebrow")}
           </p>
-          <h1 className="page-hero-title max-w-2xl">
-            {t("title")}
-          </h1>
-          <p className="mt-4 max-w-lg text-sm font-light leading-relaxed text-steel-muted sm:mt-6 sm:text-base">
+          <h1 className="page-hero-title-on-dark max-w-2xl">{t("title")}</h1>
+          <p className="on-media-muted mt-4 max-w-lg text-sm font-light leading-relaxed sm:mt-6 sm:text-base">
             {t("lead")}
           </p>
         </div>
       </section>
 
-      <section className="border-t border-steel/10 bg-ink">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:gap-12 sm:px-6 sm:py-16 md:grid-cols-2 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-10 lg:py-24">
-          <div className="space-y-8 sm:space-y-10">
+      <section className="section-shell">
+        <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2 lg:grid-cols-[0.9fr_1.1fr] lg:gap-8">
+          <div className="section-float section-float-pad space-y-8">
             <div>
-              <p className="mb-2 text-[0.65rem] uppercase tracking-wide text-steel-dim">
-                {t("phone")}
-              </p>
+              <p className="eyebrow mb-2">{t("phone")}</p>
               <a
                 href={`tel:${siteConfig.phone}`}
-                className="text-base text-steel transition-colors hover:text-steel-bright sm:text-lg"
+                className="text-base font-medium text-ink transition-colors hover:text-accent sm:text-lg"
               >
                 {siteConfig.phoneDisplay}
               </a>
             </div>
             <div>
-              <p className="mb-2 text-[0.65rem] uppercase tracking-wide text-steel-dim">
-                {t("email")}
-              </p>
+              <p className="eyebrow mb-2">{t("email")}</p>
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="break-all text-base text-steel transition-colors hover:text-steel-bright sm:text-lg"
+                className="break-all text-base font-medium text-ink transition-colors hover:text-accent sm:text-lg"
               >
                 {siteConfig.email}
               </a>
             </div>
             <div>
-              <p className="mb-2 text-[0.65rem] uppercase tracking-wide text-steel-dim">
-                {t("zone")}
-              </p>
-              <p className="text-steel-muted">{t("zoneValue")}</p>
+              <p className="eyebrow mb-2">{t("zone")}</p>
+              <p className="text-ink-muted">{t("zoneValue")}</p>
             </div>
             <div>
-              <p className="mb-2 text-[0.65rem] uppercase tracking-wide text-steel-dim">
-                {t("delay")}
-              </p>
-              <p className="text-steel-muted">{t("delayValue")}</p>
+              <p className="eyebrow mb-2">{t("delay")}</p>
+              <p className="text-ink-muted">{t("delayValue")}</p>
             </div>
-            <div className="relative hidden min-h-[16rem] overflow-hidden lg:block">
+            <div className="border border-line bg-accent-mist p-5 shadow-soft">
+              <p className="text-sm font-medium text-ink">{t("assuranceTitle")}</p>
+              <p className="mt-2 text-sm font-light leading-relaxed text-ink-muted">
+                {t("assuranceText")}
+              </p>
+            </div>
+            <div className="relative hidden min-h-[16rem] overflow-hidden shadow-float lg:block">
               <Image
                 src={assetPath("/images/process-1.jpg")}
                 alt={t("siteAlt")}
@@ -90,21 +86,18 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="border border-steel/10 bg-ink-soft p-5 sm:p-8 lg:p-12">
+          <div className="section-float section-float-pad sm:p-8 lg:p-12">
             {sent ? (
               <div className="flex min-h-[16rem] flex-col items-center justify-center text-center sm:min-h-[20rem]">
-                <p className="font-display text-2xl text-steel-bright sm:text-3xl">
-                  {t("successTitle")}
-                </p>
-                <p className="mt-4 max-w-sm text-sm font-light text-steel-muted">
+                <p className="font-display text-2xl text-ink sm:text-3xl">{t("successTitle")}</p>
+                <p className="mt-4 max-w-sm text-sm font-light text-ink-muted">
                   {t("successText")}
                 </p>
               </div>
             ) : (
               <form onSubmit={onSubmit} className="space-y-6">
-                <p className="font-display text-2xl text-steel-bright">
-                  {t("formTitle")}
-                </p>
+                <p className="font-display text-2xl text-ink">{t("formTitle")}</p>
+                <p className="text-sm font-light text-ink-muted">{t("formLead")}</p>
                 <div className="grid gap-5 sm:grid-cols-2 sm:gap-6">
                   <Field label={t("lastName")} name="lastName" required />
                   <Field label={t("firstName")} name="firstName" required />
@@ -120,7 +113,7 @@ export default function ContactPage() {
                 <div>
                   <label
                     htmlFor="message"
-                    className="mb-2 block text-[0.65rem] uppercase tracking-wide text-steel-dim"
+                    className="mb-2 block text-[0.65rem] font-medium uppercase tracking-wide text-ink-faint"
                   >
                     {t("message")}
                   </label>
@@ -129,14 +122,11 @@ export default function ContactPage() {
                     name="message"
                     required
                     rows={5}
-                    className="w-full border border-steel/20 bg-ink px-4 py-3 text-base text-steel-bright outline-none transition-colors placeholder:text-steel-dim focus:border-steel/50 sm:text-sm"
+                    className="w-full border border-line bg-paper px-4 py-3 text-base text-ink outline-none transition-colors placeholder:text-ink-faint focus:border-accent/40 sm:text-sm"
                     placeholder={t("messagePlaceholder")}
                   />
                 </div>
-                <button
-                  type="submit"
-                  className="w-full bg-steel px-8 py-3.5 text-[0.7rem] uppercase tracking-wide text-ink transition-colors hover:bg-steel-bright sm:w-auto"
-                >
+                <button type="submit" className="btn-primary w-full sm:w-auto">
                   {t("submit")}
                 </button>
               </form>
@@ -165,7 +155,7 @@ function Field({
     <div>
       <label
         htmlFor={name}
-        className="mb-2 block text-[0.65rem] uppercase tracking-wide text-steel-dim"
+        className="mb-2 block text-[0.65rem] font-medium uppercase tracking-wide text-ink-faint"
       >
         {label}
       </label>
@@ -175,7 +165,7 @@ function Field({
         type={type}
         required={required}
         defaultValue={defaultValue}
-        className="w-full border border-steel/20 bg-ink px-4 py-3 text-base text-steel-bright outline-none transition-colors focus:border-steel/50 sm:text-sm"
+        className="w-full border border-line bg-paper px-4 py-3 text-base text-ink outline-none transition-colors focus:border-accent/40 sm:text-sm"
       />
     </div>
   );

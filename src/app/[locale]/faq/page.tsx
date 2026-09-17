@@ -35,7 +35,7 @@ export default async function FaqPage({ params }: Props) {
 
   const t = await getTranslations("faq");
 
-  const faqs = [1, 2, 3, 4, 5, 6].map((n) => ({
+  const faqs = [1, 2, 3, 4, 5, 6, 7, 8].map((n) => ({
     q: t(`faq${n}Q`),
     a: t(`faq${n}A`),
   }));
@@ -53,38 +53,27 @@ export default async function FaqPage({ params }: Props) {
         )}
       />
 
-      <section className="border-b border-steel/10 bg-ink pt-24 sm:pt-28">
-        <div className="section-pad mx-auto max-w-3xl">
-          <p className="mb-3 text-[0.65rem] uppercase tracking-wide text-steel-dim sm:mb-4">
-            {t("eyebrow")}
-          </p>
+      <section className="section-shell pt-24 sm:pt-28">
+        <div className="section-float mx-auto max-w-3xl section-float-pad">
+          <p className="eyebrow mb-3 sm:mb-4">{t("eyebrow")}</p>
           <h1 className="page-hero-title">{t("title")}</h1>
-          <p className="mt-4 text-sm font-light leading-relaxed text-steel-muted sm:mt-6 sm:text-base">
-            {t("lead")}
-          </p>
+          <p className="mt-4 prose-detail sm:mt-6">{t("lead")}</p>
 
-          <div className="mt-10 space-y-6 sm:mt-14 sm:space-y-8">
+          <div className="mt-10 space-y-4 sm:mt-14">
             {faqs.map((item) => (
-              <article key={item.q} className="border-t border-steel/15 pt-5 sm:pt-6">
-                <h2 className="font-display text-lg text-steel-bright sm:text-xl">
-                  {item.q}
-                </h2>
-                <p className="mt-3 text-sm font-light leading-relaxed text-steel-muted">
+              <article key={item.q} className="panel-interactive p-5 sm:p-6">
+                <h2 className="font-display text-lg text-ink sm:text-xl">{item.q}</h2>
+                <p className="mt-3 text-sm font-light leading-relaxed text-ink-muted">
                   {item.a}
                 </p>
               </article>
             ))}
           </div>
 
-          <div className="mt-12 border-t border-steel/10 pt-10 text-center sm:mt-16">
-            <h2 className="font-display text-2xl text-steel-bright sm:text-3xl">
-              {t("ctaTitle")}
-            </h2>
-            <p className="mx-auto mt-3 max-w-md text-sm text-steel-muted">{t("ctaText")}</p>
-            <Link
-              href="/contact"
-              className="mt-6 inline-flex min-h-[3rem] items-center justify-center bg-steel px-8 py-3.5 text-[0.7rem] uppercase tracking-wide text-ink transition-colors hover:bg-steel-bright sm:mt-8"
-            >
+          <div className="mt-12 border border-line bg-accent-mist p-8 text-center shadow-float sm:mt-16 sm:p-10">
+            <h2 className="font-display text-2xl text-ink sm:text-3xl">{t("ctaTitle")}</h2>
+            <p className="mx-auto mt-3 max-w-md text-sm text-ink-muted">{t("ctaText")}</p>
+            <Link href="/contact" className="btn-primary mt-6 sm:mt-8">
               {t("ctaButton")}
             </Link>
           </div>

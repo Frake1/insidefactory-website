@@ -45,6 +45,10 @@ export default async function ServicesPage({ params }: Props) {
   const acousticPoints = [1, 2, 3, 4].map((n) => t(`acousticP${n}`));
   const ceilingMats = [1, 2, 3, 4].map((n) => t(`ceilingMat${n}`));
   const floorMats = [1, 2, 3, 4, 5].map((n) => t(`floorMat${n}`));
+  const overview = [1, 2, 3, 4].map((n) => ({
+    title: t(`overview${n}Title`),
+    text: t(`overview${n}Text`),
+  }));
 
   return (
     <>
@@ -65,68 +69,88 @@ export default async function ServicesPage({ params }: Props) {
             src={assetPath("/images/cloison-bureau.jpg")}
             alt=""
             fill
-            className="object-cover opacity-25"
+            className="object-cover"
             priority
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-ink via-ink/90 to-ink" />
+          <div className="media-scrim-page" />
         </div>
-        <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-10 lg:py-28">
-          <p className="mb-3 text-[0.65rem] uppercase tracking-wide text-steel-dim sm:mb-4">
+        <div className="relative z-[1] mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-10 lg:py-28">
+          <p className="on-media-soft mb-3 text-[0.65rem] font-medium uppercase tracking-wide sm:mb-4">
             {t("eyebrow")}
           </p>
-          <h1 className="page-hero-title max-w-3xl">{t("title")}</h1>
-          <p className="mt-4 max-w-2xl text-sm font-light leading-relaxed text-steel-muted sm:mt-6 sm:text-base">
+          <h1 className="page-hero-title-on-dark max-w-3xl">{t("title")}</h1>
+          <p className="on-media-muted mt-4 max-w-2xl text-sm font-light leading-relaxed sm:mt-6 sm:text-base">
             {t("lead")}
           </p>
         </div>
       </section>
 
-      {/* Sectors — Hoyez style */}
-      <section className="border-t border-steel/10 bg-ink-soft">
-        <div className="section-pad mx-auto max-w-7xl">
-          <h2 className="section-heading mb-8 text-2xl sm:text-3xl md:mb-10">
-            {t("sectorsTitle")}
-          </h2>
-          <div className="grid gap-4 md:grid-cols-2">
-            <div className="relative min-h-[14rem] overflow-hidden border border-steel/10 sm:min-h-[16rem]">
+      <section className="section-shell">
+        <div className="section-float mx-auto max-w-7xl section-float-pad">
+          <div className="mb-8 max-w-2xl md:mb-10">
+            <p className="eyebrow mb-3">{t("overviewEyebrow")}</p>
+            <h2 className="section-heading text-2xl sm:text-3xl md:text-4xl">
+              {t("overviewTitle")}
+            </h2>
+            <p className="mt-4 prose-detail">{t("overviewLead")}</p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {overview.map((item, i) => (
+              <div key={item.title} className="panel-interactive p-5">
+                <span className="text-[0.65rem] font-semibold text-accent">0{i + 1}</span>
+                <h3 className="mt-2 font-display text-lg text-ink">{item.title}</h3>
+                <p className="mt-2 text-sm font-light leading-relaxed text-ink-muted">
+                  {item.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell pt-0 sm:pt-0 lg:pt-0">
+        <div className="section-float mx-auto max-w-7xl section-float-pad">
+          <h2 className="section-heading mb-4 text-2xl sm:text-3xl">{t("sectorsTitle")}</h2>
+          <p className="mb-8 max-w-2xl prose-detail md:mb-10">{t("sectorsLead")}</p>
+          <div className="grid gap-5 md:grid-cols-2">
+            <div className="card-lift relative min-h-[15rem] overflow-hidden sm:min-h-[18rem]">
               <Image
                 src={assetPath("/images/office-glass.jpg")}
                 alt={t("officeTitle")}
                 fill
-                className="object-cover opacity-40"
+                className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-6">
-                <h3 className="font-display text-2xl text-steel-bright">{t("officeTitle")}</h3>
-                <p className="mt-2 text-sm font-light text-steel">{t("officeText")}</p>
+              <div className="media-scrim-card" />
+              <div className="absolute inset-x-0 bottom-0 z-[1] p-6">
+                <h3 className="on-media font-display text-2xl">{t("officeTitle")}</h3>
+                <p className="on-media-muted mt-2 text-sm font-light">{t("officeText")}</p>
               </div>
             </div>
-            <div className="relative min-h-[14rem] overflow-hidden border border-steel/10 sm:min-h-[16rem]">
+            <div className="card-lift relative min-h-[15rem] overflow-hidden sm:min-h-[18rem]">
               <Image
                 src={assetPath("/images/cloison-industrielle.jpg")}
                 alt={t("industrialTitle")}
                 fill
-                className="object-cover opacity-40"
+                className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-6">
-                <h3 className="font-display text-2xl text-steel-bright">{t("industrialTitle")}</h3>
-                <p className="mt-2 text-sm font-light text-steel">{t("industrialText")}</p>
+              <div className="media-scrim-card" />
+              <div className="absolute inset-x-0 bottom-0 z-[1] p-6">
+                <h3 className="on-media font-display text-2xl">{t("industrialTitle")}</h3>
+                <p className="on-media-muted mt-2 text-sm font-light">{t("industrialText")}</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Cloisons — primary */}
       <section
         id="cloisons"
-        className="scroll-mt-20 border-t border-steel/10 bg-ink md:scroll-mt-24"
+        className="section-shell scroll-mt-20 pt-0 sm:pt-0 md:scroll-mt-24 lg:pt-0"
       >
-        <div className="mx-auto grid max-w-7xl items-center gap-0 md:grid-cols-2">
+        <div className="section-float mx-auto grid max-w-7xl overflow-hidden md:grid-cols-2">
           <div className="relative min-h-[14rem] sm:min-h-[18rem] md:min-h-[28rem] lg:min-h-[34rem]">
             <Image
               src={assetPath("/images/office-partition.jpg")}
@@ -136,23 +160,20 @@ export default async function ServicesPage({ params }: Props) {
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
-          <div className="px-4 py-10 sm:px-6 sm:py-14 md:px-12 lg:px-16 lg:py-24">
-            <h2 className="font-display text-3xl text-steel-bright sm:text-4xl md:text-5xl">
+          <div className="section-float-pad flex flex-col justify-center">
+            <p className="eyebrow mb-3">{t("partitionsEyebrow")}</p>
+            <h2 className="font-display text-3xl text-ink sm:text-4xl md:text-5xl">
               {t("partitionsTitle")}
             </h2>
-            <p className="mt-4 text-base font-light leading-relaxed text-steel sm:mt-6 sm:text-lg">
+            <p className="mt-4 text-base font-light leading-relaxed text-ink-soft sm:mt-6 sm:text-lg">
               {t("partitionsLead")}
             </p>
-            <p className="mt-3 text-sm font-light leading-relaxed text-steel-muted sm:mt-4">
+            <p className="mt-3 text-sm font-light leading-relaxed text-ink-muted sm:mt-4">
               {t("partitionsBody")}
             </p>
             <ul className="mt-6 space-y-3 sm:mt-8">
               {[1, 2, 3, 4, 5].map((n) => (
-                <li
-                  key={n}
-                  className="flex items-start gap-3 text-sm text-steel-muted"
-                >
-                  <span className="mt-2 h-px w-6 shrink-0 bg-steel/40" />
+                <li key={n} className="list-rule">
                   {t(`partitionsP${n}`)}
                 </li>
               ))}
@@ -161,20 +182,17 @@ export default async function ServicesPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Finishes grid */}
-      <section className="border-t border-steel/10 bg-ink-soft">
-        <div className="section-pad mx-auto max-w-7xl">
-          <h2 className="section-heading mb-8 text-2xl sm:text-3xl md:mb-12">
+      <section className="section-shell pt-0 sm:pt-0 lg:pt-0">
+        <div className="section-float mx-auto max-w-7xl section-float-pad">
+          <h2 className="section-heading mb-4 text-2xl sm:text-3xl md:mb-3">
             {t("partitionTypesTitle")}
           </h2>
+          <p className="mb-8 max-w-2xl prose-detail md:mb-12">{t("partitionTypesLead")}</p>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {partitionTypes.map((item) => (
-              <div
-                key={item.title}
-                className="border border-steel/10 bg-ink px-5 py-6"
-              >
-                <h3 className="font-display text-lg text-steel-bright">{item.title}</h3>
-                <p className="mt-3 text-sm font-light leading-relaxed text-steel-muted">
+              <div key={item.title} className="panel-interactive px-5 py-6">
+                <h3 className="font-display text-lg text-ink">{item.title}</h3>
+                <p className="mt-3 text-sm font-light leading-relaxed text-ink-muted">
                   {item.text}
                 </p>
               </div>
@@ -183,31 +201,31 @@ export default async function ServicesPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Acoustique — primary */}
       <section
         id="acoustique"
-        className="scroll-mt-20 border-t border-steel/10 bg-ink md:scroll-mt-24"
+        className="section-shell scroll-mt-20 pt-0 sm:pt-0 md:scroll-mt-24 lg:pt-0"
       >
-        <div className="section-pad mx-auto max-w-7xl">
+        <div className="section-float mx-auto max-w-7xl section-float-pad">
           <div className="grid items-start gap-10 md:grid-cols-2 md:gap-16">
             <div>
-              <h2 className="font-display text-3xl text-steel-bright sm:text-4xl md:text-5xl">
+              <p className="eyebrow mb-3">{t("acousticEyebrow")}</p>
+              <h2 className="font-display text-3xl text-ink sm:text-4xl md:text-5xl">
                 {t("acousticTitle")}
               </h2>
-              <p className="mt-4 text-base font-light leading-relaxed text-steel sm:mt-6 sm:text-lg">
+              <p className="mt-4 text-base font-light leading-relaxed text-ink-soft sm:mt-6 sm:text-lg">
                 {t("acousticLead")}
               </p>
-              <p className="mt-4 text-sm font-light leading-relaxed text-steel-muted">
+              <p className="mt-4 text-sm font-light leading-relaxed text-ink-muted">
                 {t("acousticBody")}
               </p>
             </div>
-            <ul className="space-y-4 border-t border-steel/15 pt-6 md:border-t-0 md:pt-2">
+            <ul className="space-y-0 border border-line bg-paper p-2 shadow-float">
               {acousticPoints.map((point) => (
                 <li
                   key={point}
-                  className="flex items-start gap-3 border-b border-steel/10 pb-4 text-sm text-steel"
+                  className="flex items-start gap-3 border-b border-line bg-surface px-4 py-4 text-sm text-ink-soft last:border-b-0"
                 >
-                  <span className="mt-2 h-px w-8 shrink-0 bg-steel/50" />
+                  <span className="mt-2 h-px w-6 shrink-0 bg-accent/60" />
                   {point}
                 </li>
               ))}
@@ -216,12 +234,11 @@ export default async function ServicesPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Plafonds techniques */}
       <section
         id="plafonds"
-        className="scroll-mt-20 border-t border-steel/10 bg-ink-soft md:scroll-mt-24"
+        className="section-shell scroll-mt-20 pt-0 sm:pt-0 md:scroll-mt-24 lg:pt-0"
       >
-        <div className="mx-auto grid max-w-7xl items-center gap-0 md:grid-cols-2 md:[&>*:first-child]:order-2">
+        <div className="section-float mx-auto grid max-w-7xl overflow-hidden md:grid-cols-2 md:[&>*:first-child]:order-2">
           <div className="relative min-h-[14rem] sm:min-h-[18rem] md:min-h-[28rem]">
             <Image
               src={assetPath("/images/plafond.jpg")}
@@ -231,33 +248,27 @@ export default async function ServicesPage({ params }: Props) {
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
-          <div className="px-4 py-10 sm:px-6 sm:py-14 md:px-12 lg:px-16 lg:py-24">
-            <h2 className="font-display text-3xl text-steel-bright sm:text-4xl md:text-5xl">
+          <div className="section-float-pad flex flex-col justify-center">
+            <p className="eyebrow mb-3">{t("ceilingsEyebrow")}</p>
+            <h2 className="font-display text-3xl text-ink sm:text-4xl md:text-5xl">
               {t("ceilingsTitle")}
             </h2>
-            <p className="mt-4 text-base font-light leading-relaxed text-steel sm:mt-6 sm:text-lg">
+            <p className="mt-4 text-base font-light leading-relaxed text-ink-soft sm:mt-6 sm:text-lg">
               {t("ceilingsLead")}
             </p>
-            <p className="mt-3 text-sm font-light leading-relaxed text-steel-muted sm:mt-4">
+            <p className="mt-3 text-sm font-light leading-relaxed text-ink-muted sm:mt-4">
               {t("ceilingsBody")}
             </p>
             <ul className="mt-6 space-y-3 sm:mt-8">
               {[1, 2, 3, 4, 5].map((n) => (
-                <li
-                  key={n}
-                  className="flex items-start gap-3 text-sm text-steel-muted"
-                >
-                  <span className="mt-2 h-px w-6 shrink-0 bg-steel/40" />
+                <li key={n} className="list-rule">
                   {t(`ceilingsP${n}`)}
                 </li>
               ))}
             </ul>
             <div className="mt-8 flex flex-wrap gap-2">
               {ceilingMats.map((mat) => (
-                <span
-                  key={mat}
-                  className="border border-steel/20 px-3 py-1.5 text-[0.7rem] uppercase tracking-wide text-steel-dim"
-                >
+                <span key={mat} className="spec-chip">
                   {mat}
                 </span>
               ))}
@@ -266,12 +277,11 @@ export default async function ServicesPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Plancher technique */}
       <section
         id="sols"
-        className="scroll-mt-20 border-t border-steel/10 bg-ink md:scroll-mt-24"
+        className="section-shell scroll-mt-20 pt-0 sm:pt-0 md:scroll-mt-24 lg:pt-0"
       >
-        <div className="mx-auto grid max-w-7xl items-center gap-0 md:grid-cols-2">
+        <div className="section-float mx-auto grid max-w-7xl overflow-hidden md:grid-cols-2">
           <div className="relative min-h-[14rem] sm:min-h-[18rem] md:min-h-[28rem]">
             <Image
               src={assetPath("/images/sol-detail.jpg")}
@@ -281,33 +291,27 @@ export default async function ServicesPage({ params }: Props) {
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
-          <div className="px-4 py-10 sm:px-6 sm:py-14 md:px-12 lg:px-16 lg:py-24">
-            <h2 className="font-display text-3xl text-steel-bright sm:text-4xl md:text-5xl">
+          <div className="section-float-pad flex flex-col justify-center">
+            <p className="eyebrow mb-3">{t("floorsEyebrow")}</p>
+            <h2 className="font-display text-3xl text-ink sm:text-4xl md:text-5xl">
               {t("floorsTitle")}
             </h2>
-            <p className="mt-4 text-base font-light leading-relaxed text-steel sm:mt-6 sm:text-lg">
+            <p className="mt-4 text-base font-light leading-relaxed text-ink-soft sm:mt-6 sm:text-lg">
               {t("floorsLead")}
             </p>
-            <p className="mt-3 text-sm font-light leading-relaxed text-steel-muted sm:mt-4">
+            <p className="mt-3 text-sm font-light leading-relaxed text-ink-muted sm:mt-4">
               {t("floorsBody")}
             </p>
             <ul className="mt-6 space-y-3 sm:mt-8">
               {[1, 2, 3, 4, 5].map((n) => (
-                <li
-                  key={n}
-                  className="flex items-start gap-3 text-sm text-steel-muted"
-                >
-                  <span className="mt-2 h-px w-6 shrink-0 bg-steel/40" />
+                <li key={n} className="list-rule">
                   {t(`floorsP${n}`)}
                 </li>
               ))}
             </ul>
             <div className="mt-8 flex flex-wrap gap-2">
               {floorMats.map((mat) => (
-                <span
-                  key={mat}
-                  className="border border-steel/20 px-3 py-1.5 text-[0.7rem] uppercase tracking-wide text-steel-dim"
-                >
+                <span key={mat} className="spec-chip">
                   {mat}
                 </span>
               ))}
@@ -316,45 +320,35 @@ export default async function ServicesPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Secondary — de-emphasized */}
       <section
         id="complementaires"
-        className="scroll-mt-20 border-t border-steel/10 bg-ink-soft md:scroll-mt-24"
+        className="section-shell scroll-mt-20 pt-0 sm:pt-0 md:scroll-mt-24 lg:pt-0"
       >
-        <div className="section-pad mx-auto max-w-7xl">
-          <p className="mb-2 text-[0.65rem] uppercase tracking-wide text-steel-dim">
-            {t("secondaryTitle")}
-          </p>
-          <h2 className="font-display text-2xl text-steel-bright sm:text-3xl">
-            {t("secondaryTitle")}
-          </h2>
-          <p className="mt-4 max-w-2xl text-sm font-light text-steel-muted">
-            {t("secondaryLead")}
-          </p>
+        <div className="section-float mx-auto max-w-7xl section-float-pad">
+          <p className="eyebrow mb-2">{t("secondaryEyebrow")}</p>
+          <h2 className="font-display text-2xl text-ink sm:text-3xl">{t("secondaryTitle")}</h2>
+          <p className="mt-4 max-w-2xl prose-detail">{t("secondaryLead")}</p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            <div className="border border-steel/10 bg-ink px-5 py-6">
-              <h3 className="font-display text-lg text-steel">{t("secondary1Title")}</h3>
-              <p className="mt-2 text-sm font-light text-steel-muted">{t("secondary1Text")}</p>
+            <div className="panel-interactive px-5 py-6">
+              <h3 className="font-display text-lg text-ink">{t("secondary1Title")}</h3>
+              <p className="mt-2 text-sm font-light text-ink-muted">{t("secondary1Text")}</p>
             </div>
-            <div className="border border-steel/10 bg-ink px-5 py-6">
-              <h3 className="font-display text-lg text-steel">{t("secondary2Title")}</h3>
-              <p className="mt-2 text-sm font-light text-steel-muted">{t("secondary2Text")}</p>
+            <div className="panel-interactive px-5 py-6">
+              <h3 className="font-display text-lg text-ink">{t("secondary2Title")}</h3>
+              <p className="mt-2 text-sm font-light text-ink-muted">{t("secondary2Text")}</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="section-pad-tight border-t border-steel/10 bg-ink text-center">
-        <h2 className="section-heading text-3xl sm:text-4xl">{t("ctaTitle")}</h2>
-        <p className="mx-auto mt-3 max-w-lg text-sm font-light text-steel-muted sm:mt-4">
-          {t("ctaText")}
-        </p>
-        <Link
-          href="/contact"
-          className="mt-6 inline-flex min-h-[3rem] items-center justify-center bg-steel px-8 py-3.5 text-[0.7rem] uppercase tracking-wide text-ink transition-colors hover:bg-steel-bright sm:mt-8"
-        >
-          {t("ctaButton")}
-        </Link>
+      <section className="section-shell pt-0 sm:pt-0 lg:pt-0 pb-12 sm:pb-14 lg:pb-16">
+        <div className="section-float mx-auto max-w-7xl section-float-pad text-center">
+          <h2 className="section-heading text-3xl sm:text-4xl">{t("ctaTitle")}</h2>
+          <p className="mx-auto mt-3 max-w-lg prose-detail sm:mt-4">{t("ctaText")}</p>
+          <Link href="/contact" className="btn-primary mt-6 sm:mt-8">
+            {t("ctaButton")}
+          </Link>
+        </div>
       </section>
     </>
   );

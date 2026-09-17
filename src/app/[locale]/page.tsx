@@ -68,9 +68,17 @@ export default async function HomePage({ params }: Props) {
     text: t(`pillar${n}Text`),
   }));
 
+  const trust = [1, 2, 3, 4].map((n) => ({
+    title: t(`trust${n}Title`),
+    text: t(`trust${n}Text`),
+  }));
+
+  const aboutPoints = [1, 2, 3].map((n) => t(`aboutPoint${n}`));
+
   const core = [1, 2, 3, 4].map((n, i) => ({
     title: t(`core${n}Title`),
     text: t(`core${n}Text`),
+    detail: t(`core${n}Detail`),
     image: assetPath(CORE_IMAGES[i]),
     href: CORE_HREFS[i],
   }));
@@ -80,6 +88,7 @@ export default async function HomePage({ params }: Props) {
   const portfolio = PORTFOLIO_IMAGES.map((img, i) => ({
     src: assetPath(img),
     alt: t(`portfolioAlt${i + 1}`),
+    label: t(`portfolioLabel${i + 1}`),
   }));
 
   const steps = [1, 2, 3, 4].map((n) => ({
@@ -104,26 +113,23 @@ export default async function HomePage({ params }: Props) {
             className="hero-media object-cover object-center"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/65 to-ink/35" />
+          <div className="media-scrim-hero" />
         </div>
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-12 pt-28 sm:px-6 sm:pb-16 sm:pt-32 lg:px-10 lg:pb-24 lg:pt-36">
           <div className="hero-copy max-w-3xl">
-            <h1 className="page-hero-title leading-[1.1]">{t("heroTitle")}</h1>
-            <p className="mt-4 max-w-2xl text-sm font-light leading-relaxed text-steel sm:mt-6 sm:text-base md:text-lg">
+            <p className="on-media-soft mb-4 text-[0.7rem] font-medium uppercase tracking-[0.16em]">
+              Inside Factory
+            </p>
+            <h1 className="page-hero-title-on-dark leading-[1.08]">{t("heroTitle")}</h1>
+            <p className="on-media-muted mt-5 max-w-2xl text-sm font-light leading-relaxed sm:mt-6 sm:text-base md:text-lg">
               {t("heroText")}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-              <Link
-                href="/services#cloisons"
-                className="inline-flex min-h-[3rem] items-center justify-center bg-steel px-7 py-3.5 text-[0.7rem] uppercase tracking-wide text-ink transition-colors hover:bg-steel-bright"
-              >
+              <Link href="/services#cloisons" className="btn-on-media-solid">
                 {t("heroCta")}
               </Link>
-              <Link
-                href="/contact"
-                className="inline-flex min-h-[3rem] items-center justify-center border border-steel/40 px-7 py-3.5 text-[0.7rem] uppercase tracking-wide text-steel transition-colors hover:border-steel hover:text-steel-bright"
-              >
+              <Link href="/contact" className="btn-on-media">
                 {t("heroSecondary")}
               </Link>
             </div>
@@ -131,52 +137,77 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      {/* Core technical pillars */}
-      <section className="border-t border-steel/10 bg-ink-soft">
-        <div className="mx-auto grid max-w-7xl gap-px bg-steel/10 sm:grid-cols-2 lg:grid-cols-4">
-          {pillars.map((pillar, i) => (
+      {/* Trust / assurance strip */}
+      <section className="section-shell">
+        <div className="reveal section-float mx-auto grid max-w-7xl sm:grid-cols-2 lg:grid-cols-4">
+          {trust.map((item, i) => (
             <div
-              key={pillar.title}
-              className={`reveal bg-ink-soft px-5 py-8 sm:px-6 sm:py-10 ${
-                i === 1 ? "reveal-delay-1" : i === 2 ? "reveal-delay-2" : i === 3 ? "reveal-delay-3" : ""
-              }`}
+              key={item.title}
+              className={`border-line px-5 py-7 sm:px-6 sm:py-8 ${
+                i > 0 ? "border-t sm:border-t-0" : ""
+              } ${i % 2 === 1 ? "sm:border-l" : ""} ${
+                i > 0 ? "lg:border-l" : ""
+              } ${i === 1 ? "reveal-delay-1" : i === 2 ? "reveal-delay-2" : i === 3 ? "reveal-delay-3" : ""}`}
             >
-              <span className="font-sans text-[0.65rem] tracking-wide text-steel-dim">
+              <p className="text-[0.65rem] font-semibold uppercase tracking-wide text-accent">
                 0{i + 1}
-              </span>
-              <h2 className="mt-3 font-display text-xl text-steel-bright sm:text-2xl">
-                {pillar.title}
-              </h2>
-              <p className="mt-3 text-sm font-light leading-relaxed text-steel-muted">
-                {pillar.text}
               </p>
+              <h2 className="mt-2 font-display text-lg text-ink sm:text-xl">{item.title}</h2>
+              <p className="mt-2 text-sm leading-relaxed text-ink-muted">{item.text}</p>
             </div>
           ))}
         </div>
       </section>
 
+      {/* Core technical pillars */}
+      <section className="section-shell pt-0 sm:pt-0 lg:pt-0">
+        <div className="section-float mx-auto max-w-7xl section-float-pad">
+          <div className="mb-8 max-w-2xl md:mb-10">
+            <p className="eyebrow reveal mb-3">{t("pillarsEyebrow")}</p>
+            <h2 className="reveal section-heading text-3xl sm:text-4xl">{t("pillarsTitle")}</h2>
+            <p className="reveal reveal-delay-1 mt-4 prose-detail">{t("pillarsLead")}</p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+            {pillars.map((pillar, i) => (
+              <div
+                key={pillar.title}
+                className={`reveal panel-interactive p-5 sm:p-6 ${
+                  i === 1 ? "reveal-delay-1" : i === 2 ? "reveal-delay-2" : i === 3 ? "reveal-delay-3" : ""
+                }`}
+              >
+                <span className="text-[0.65rem] font-semibold tracking-wide text-accent">
+                  0{i + 1}
+                </span>
+                <h3 className="mt-3 font-display text-xl text-ink sm:text-2xl">{pillar.title}</h3>
+                <p className="mt-3 text-sm font-light leading-relaxed text-ink-muted">
+                  {pillar.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Specialty intro */}
-      <section className="border-t border-steel/10 bg-ink">
-        <div className="section-pad mx-auto grid max-w-7xl items-center gap-10 md:grid-cols-2 md:gap-16">
-          <div className="reveal">
-            <p className="mb-3 text-[0.65rem] uppercase tracking-wide text-steel-dim sm:mb-4">
-              {t("aboutEyebrow")}
-            </p>
+      <section className="section-shell pt-0 sm:pt-0 lg:pt-0">
+        <div className="reveal section-float mx-auto grid max-w-7xl overflow-hidden md:grid-cols-2">
+          <div className="section-float-pad flex flex-col justify-center">
+            <p className="eyebrow mb-3 sm:mb-4">{t("aboutEyebrow")}</p>
             <h2 className="section-heading text-3xl sm:text-4xl">{t("aboutTitle")}</h2>
-            <p className="mt-5 text-sm font-light leading-relaxed text-steel-muted sm:text-base">
-              {t("aboutText")}
-            </p>
-            <p className="mt-4 text-sm font-light leading-relaxed text-steel-muted sm:text-base">
-              {t("aboutText2")}
-            </p>
-            <Link
-              href="/a-propos"
-              className="mt-6 inline-flex min-h-[2.75rem] items-center text-sm text-steel transition-colors hover:text-steel-bright sm:mt-8"
-            >
+            <p className="mt-5 prose-detail">{t("aboutText")}</p>
+            <p className="mt-4 prose-detail">{t("aboutText2")}</p>
+            <ul className="mt-6 space-y-3">
+              {aboutPoints.map((point) => (
+                <li key={point} className="list-rule">
+                  {point}
+                </li>
+              ))}
+            </ul>
+            <Link href="/a-propos" className="btn-ghost mt-6 sm:mt-8">
               {t("aboutLink")}
             </Link>
           </div>
-          <div className="reveal reveal-delay-1 relative min-h-[16rem] overflow-hidden sm:min-h-[20rem] md:min-h-[24rem]">
+          <div className="relative min-h-[16rem] sm:min-h-[20rem] md:min-h-full md:min-h-[26rem]">
             <Image
               src={assetPath("/images/office-partition.jpg")}
               alt={t("aboutTitle")}
@@ -188,32 +219,39 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      {/* Core expertise — 4 specialties */}
-      <section id="expertise" className="scroll-mt-20 border-t border-steel/10 bg-ink-soft md:scroll-mt-24">
-        <div className="section-pad mx-auto max-w-7xl">
-          <h2 className="reveal section-heading mb-10 md:mb-14">{t("coreTitle")}</h2>
-          <div className="grid gap-4 sm:grid-cols-2 lg:gap-6">
+      {/* Core expertise */}
+      <section id="expertise" className="section-shell scroll-mt-20 pt-0 sm:pt-0 md:scroll-mt-24 lg:pt-0">
+        <div className="section-float mx-auto max-w-7xl section-float-pad">
+          <div className="mb-8 max-w-2xl md:mb-10">
+            <p className="eyebrow reveal mb-3">{t("coreEyebrow")}</p>
+            <h2 className="reveal section-heading">{t("coreTitle")}</h2>
+            <p className="reveal reveal-delay-1 mt-4 prose-detail">{t("coreLead")}</p>
+          </div>
+          <div className="grid gap-5 sm:grid-cols-2 lg:gap-6">
             {core.map((item, i) => (
               <Link
                 key={item.title}
                 href={item.href}
-                className={`reveal group grid overflow-hidden border border-steel/10 bg-ink transition-colors hover:border-steel/30 sm:grid-cols-[0.9fr_1.1fr] ${
+                className={`reveal group panel-interactive grid overflow-hidden sm:grid-cols-[0.85fr_1.15fr] ${
                   i === 1 ? "reveal-delay-1" : i === 2 ? "reveal-delay-2" : i === 3 ? "reveal-delay-3" : ""
                 }`}
               >
-                <div className="relative min-h-[10rem] sm:min-h-full">
+                <div className="relative min-h-[11rem] sm:min-h-full">
                   <Image
                     src={item.image}
                     alt={item.title}
                     fill
-                    className="object-cover opacity-60 transition-all duration-700 group-hover:scale-105 group-hover:opacity-75"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                     sizes="(max-width: 640px) 100vw, 40vw"
                   />
                 </div>
                 <div className="flex flex-col justify-center p-5 sm:p-7">
-                  <h3 className="font-display text-2xl text-steel-bright">{item.title}</h3>
-                  <p className="mt-3 text-sm font-light leading-relaxed text-steel-muted">
+                  <h3 className="font-display text-2xl text-ink">{item.title}</h3>
+                  <p className="mt-3 text-sm font-light leading-relaxed text-ink-muted">
                     {item.text}
+                  </p>
+                  <p className="mt-3 border-t border-line pt-3 text-xs leading-relaxed text-ink-faint">
+                    {item.detail}
                   </p>
                 </div>
               </Link>
@@ -222,49 +260,55 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      {/* Hoyez-style sectors */}
-      <section className="border-t border-steel/10 bg-ink">
-        <div className="section-pad mx-auto max-w-7xl">
-          <h2 className="reveal section-heading mb-10 text-2xl sm:text-3xl md:mb-12">
-            {t("sectorTitle")}
-          </h2>
-          <div className="grid gap-4 md:grid-cols-2 md:gap-6">
+      {/* Sectors */}
+      <section className="section-shell pt-0 sm:pt-0 lg:pt-0">
+        <div className="section-float mx-auto max-w-7xl section-float-pad">
+          <div className="mb-8 max-w-2xl md:mb-10">
+            <p className="eyebrow reveal mb-3">{t("sectorEyebrow")}</p>
+            <h2 className="reveal section-heading text-2xl sm:text-3xl md:text-4xl">
+              {t("sectorTitle")}
+            </h2>
+            <p className="reveal reveal-delay-1 mt-4 prose-detail">{t("sectorLead")}</p>
+          </div>
+          <div className="grid gap-5 md:grid-cols-2 md:gap-6">
             <Link
               href="/services#cloisons"
-              className="reveal group relative min-h-[16rem] overflow-hidden border border-steel/10 sm:min-h-[18rem]"
+              className="reveal group card-lift relative min-h-[17rem] overflow-hidden sm:min-h-[20rem]"
             >
               <Image
                 src={assetPath("/images/office-glass.jpg")}
                 alt={t("sectorOfficeTitle")}
                 fill
-                className="object-cover opacity-45 transition-transform duration-700 group-hover:scale-105"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-                <h3 className="font-display text-2xl text-steel-bright sm:text-3xl">
+              <div className="media-scrim-card" />
+              <div className="absolute inset-x-0 bottom-0 z-[1] p-6 sm:p-8">
+                <h3 className="on-media font-display text-2xl sm:text-3xl">
                   {t("sectorOfficeTitle")}
                 </h3>
-                <p className="mt-3 max-w-md text-sm font-light text-steel">{t("sectorOfficeText")}</p>
+                <p className="on-media-muted mt-3 max-w-md text-sm font-light">
+                  {t("sectorOfficeText")}
+                </p>
               </div>
             </Link>
             <Link
               href="/services#cloisons"
-              className="reveal reveal-delay-1 group relative min-h-[16rem] overflow-hidden border border-steel/10 sm:min-h-[18rem]"
+              className="reveal reveal-delay-1 group card-lift relative min-h-[17rem] overflow-hidden sm:min-h-[20rem]"
             >
               <Image
                 src={assetPath("/images/cloison-industrielle.jpg")}
                 alt={t("sectorIndustrialTitle")}
                 fill
-                className="object-cover opacity-45 transition-transform duration-700 group-hover:scale-105"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-                <h3 className="font-display text-2xl text-steel-bright sm:text-3xl">
+              <div className="media-scrim-card" />
+              <div className="absolute inset-x-0 bottom-0 z-[1] p-6 sm:p-8">
+                <h3 className="on-media font-display text-2xl sm:text-3xl">
                   {t("sectorIndustrialTitle")}
                 </h3>
-                <p className="mt-3 max-w-md text-sm font-light text-steel">
+                <p className="on-media-muted mt-3 max-w-md text-sm font-light">
                   {t("sectorIndustrialText")}
                 </p>
               </div>
@@ -274,16 +318,20 @@ export default async function HomePage({ params }: Props) {
       </section>
 
       {/* Finishes */}
-      <section className="border-t border-steel/10 bg-ink-soft">
-        <div className="section-pad mx-auto max-w-7xl">
-          <h2 className="reveal section-heading mb-8 text-2xl sm:text-3xl md:mb-10">
-            {t("finishesTitle")}
-          </h2>
-          <div className="reveal reveal-delay-1 grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
+      <section className="section-shell pt-0 sm:pt-0 lg:pt-0">
+        <div className="section-float mx-auto max-w-7xl section-float-pad">
+          <div className="mb-8 max-w-2xl md:mb-10">
+            <p className="eyebrow reveal mb-3">{t("finishesEyebrow")}</p>
+            <h2 className="reveal section-heading text-2xl sm:text-3xl md:text-4xl">
+              {t("finishesTitle")}
+            </h2>
+            <p className="reveal reveal-delay-1 mt-4 prose-detail">{t("finishesLead")}</p>
+          </div>
+          <div className="reveal reveal-delay-1 grid grid-cols-2 gap-3 sm:grid-cols-4">
             {finishes.map((type) => (
               <div
                 key={type}
-                className="border border-steel/15 bg-ink px-3 py-4 text-center text-sm text-steel sm:px-4 sm:py-5"
+                className="border border-line bg-paper px-3 py-5 text-center text-sm font-medium text-ink-soft shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:shadow-float sm:px-4 sm:py-6"
               >
                 {type}
               </div>
@@ -292,83 +340,94 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      {/* Secondary services — de-emphasized */}
-      <section className="border-t border-steel/10 bg-ink">
-        <div className="section-pad mx-auto max-w-7xl">
-          <p className="reveal mb-2 text-[0.65rem] uppercase tracking-wide text-steel-dim">
-            {t("secondaryTitle")}
-          </p>
-          <h2 className="reveal font-display text-2xl text-steel-bright sm:text-3xl">
+      {/* Secondary services */}
+      <section className="section-shell pt-0 sm:pt-0 lg:pt-0">
+        <div className="section-float mx-auto max-w-7xl section-float-pad">
+          <p className="eyebrow reveal mb-2">{t("secondaryEyebrow")}</p>
+          <h2 className="reveal font-display text-2xl text-ink sm:text-3xl">
             {t("secondaryTitle")}
           </h2>
-          <p className="reveal reveal-delay-1 mt-4 max-w-2xl text-sm font-light leading-relaxed text-steel-muted">
+          <p className="reveal reveal-delay-1 mt-4 max-w-2xl prose-detail">
             {t("secondaryLead")}
           </p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            <div className="reveal border border-steel/10 bg-ink-soft px-5 py-6">
-              <h3 className="font-display text-lg text-steel">{t("secondary1Title")}</h3>
-              <p className="mt-2 text-sm font-light text-steel-muted">{t("secondary1Text")}</p>
+            <div className="reveal panel-interactive px-5 py-6 sm:px-6 sm:py-7">
+              <h3 className="font-display text-lg text-ink sm:text-xl">
+                {t("secondary1Title")}
+              </h3>
+              <p className="mt-2 text-sm font-light leading-relaxed text-ink-muted">
+                {t("secondary1Text")}
+              </p>
             </div>
-            <div className="reveal reveal-delay-1 border border-steel/10 bg-ink-soft px-5 py-6">
-              <h3 className="font-display text-lg text-steel">{t("secondary2Title")}</h3>
-              <p className="mt-2 text-sm font-light text-steel-muted">{t("secondary2Text")}</p>
+            <div className="reveal reveal-delay-1 panel-interactive px-5 py-6 sm:px-6 sm:py-7">
+              <h3 className="font-display text-lg text-ink sm:text-xl">
+                {t("secondary2Title")}
+              </h3>
+              <p className="mt-2 text-sm font-light leading-relaxed text-ink-muted">
+                {t("secondary2Text")}
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Portfolio */}
-      <section className="border-t border-steel/10 bg-ink-soft">
-        <div className="section-pad mx-auto max-w-7xl">
-          <h2 className="reveal section-heading mb-10 md:mb-14">{t("portfolioTitle")}</h2>
-          <div className="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-4 md:gap-4">
+      <section className="section-shell pt-0 sm:pt-0 lg:pt-0">
+        <div className="section-float mx-auto max-w-7xl section-float-pad">
+          <div className="mb-8 max-w-2xl md:mb-10">
+            <p className="eyebrow reveal mb-3">{t("portfolioEyebrow")}</p>
+            <h2 className="reveal section-heading">{t("portfolioTitle")}</h2>
+            <p className="reveal reveal-delay-1 mt-4 prose-detail">{t("portfolioLead")}</p>
+          </div>
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
             {portfolio.map((item, i) => (
-              <div
+              <figure
                 key={item.src}
-                className={`reveal relative aspect-[4/3] overflow-hidden ${
+                className={`reveal group card-lift relative overflow-hidden bg-paper ${
                   i === 1 ? "reveal-delay-1" : i === 2 ? "reveal-delay-2" : i === 3 ? "reveal-delay-3" : ""
                 }`}
               >
-                <Image
-                  src={item.src}
-                  alt={item.alt}
-                  fill
-                  className="object-cover transition-transform duration-700 hover:scale-105"
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                />
-              </div>
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                  />
+                </div>
+                <figcaption className="border border-t-0 border-line bg-surface px-3 py-2.5 text-xs text-ink-muted">
+                  {item.label}
+                </figcaption>
+              </figure>
             ))}
           </div>
         </div>
       </section>
 
       {/* Process */}
-      <section className="border-t border-steel/10 bg-ink">
-        <div className="section-pad mx-auto max-w-7xl">
-          <p className="reveal mb-3 text-[0.65rem] uppercase tracking-wide text-steel-dim">
-            {t("processEyebrow")}
-          </p>
+      <section className="section-shell pt-0 sm:pt-0 lg:pt-0 pb-12 sm:pb-14 lg:pb-16">
+        <div className="section-float mx-auto max-w-7xl section-float-pad">
+          <p className="eyebrow reveal mb-3">{t("processEyebrow")}</p>
           <h2 className="reveal section-heading max-w-3xl text-3xl sm:text-4xl">
             {t("processTitle")}
           </h2>
-          <p className="reveal reveal-delay-1 mt-4 max-w-2xl text-sm font-light leading-relaxed text-steel-muted sm:text-base">
+          <p className="reveal reveal-delay-1 mt-4 max-w-2xl prose-detail">
             {t("processLead")}
           </p>
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((step, i) => (
               <div
                 key={step.n}
-                className={`reveal border-t border-steel/20 pt-6 ${
+                className={`reveal panel-interactive p-5 sm:p-6 ${
                   i === 1 ? "reveal-delay-1" : i === 2 ? "reveal-delay-2" : i === 3 ? "reveal-delay-3" : ""
                 }`}
               >
-                <span className="font-sans text-[0.7rem] tracking-wide text-steel-dim">
+                <span className="text-[0.7rem] font-semibold tracking-wide text-accent">
                   {step.n}
                 </span>
-                <h3 className="mt-4 font-display text-xl text-steel-bright sm:text-2xl">
-                  {step.title}
-                </h3>
-                <p className="mt-3 text-sm font-light leading-relaxed text-steel-muted">
+                <h3 className="mt-4 font-display text-xl text-ink sm:text-2xl">{step.title}</h3>
+                <p className="mt-3 text-sm font-light leading-relaxed text-ink-muted">
                   {step.text}
                 </p>
               </div>
@@ -387,17 +446,16 @@ export default async function HomePage({ params }: Props) {
             className="object-cover"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-ink/80" />
+          <div className="media-scrim-cta" />
         </div>
-        <div className="relative mx-auto max-w-3xl px-4 py-20 text-center sm:px-6 sm:py-24 lg:px-10 lg:py-28">
-          <h2 className="reveal section-heading text-balance">{t("ctaTitle")}</h2>
-          <p className="reveal reveal-delay-1 mx-auto mt-4 max-w-lg text-sm font-light text-steel-muted">
+        <div className="relative z-[1] mx-auto max-w-3xl px-4 py-20 text-center sm:px-6 sm:py-24 lg:px-10 lg:py-28">
+          <h2 className="reveal page-hero-title-on-dark text-balance text-3xl sm:text-4xl md:text-5xl">
+            {t("ctaTitle")}
+          </h2>
+          <p className="reveal reveal-delay-1 on-media-muted mx-auto mt-4 max-w-lg text-sm font-light">
             {t("ctaText")}
           </p>
-          <Link
-            href="/contact"
-            className="reveal reveal-delay-2 mt-8 inline-flex min-h-[3rem] items-center justify-center bg-steel px-8 py-3.5 text-[0.7rem] uppercase tracking-wide text-ink transition-colors hover:bg-steel-bright sm:mt-10"
-          >
+          <Link href="/contact" className="reveal reveal-delay-2 btn-on-media-solid mt-8 sm:mt-10">
             {t("ctaButton")}
           </Link>
         </div>

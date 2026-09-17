@@ -135,7 +135,42 @@
     "ctaTitle": "Besoin d'un conseil ou d'un devis pour cloisons ou systèmes techniques ?",
     "ctaText": "Cloisons, acoustique, plafonds techniques ou plancher technique — un expert Inside Factory vous répond sous 24h.",
     "ctaButton": "Contactez-nous",
-    "ctaAlt": "Couloir de bureaux avec cloisons amovibles par Inside Factory"
+    "ctaAlt": "Couloir de bureaux avec cloisons amovibles par Inside Factory",
+    "pillarsEyebrow": "Cœur de métier",
+    "pillarsTitle": "Quatre expertises techniques, une même exigence",
+    "pillarsLead": "Cloisons amovibles, acoustique, plafonds techniques et plancher technique — conçus, fournis et posés pour des espaces professionnels performants.",
+    "trust1Title": "Couverture nationale",
+    "trust1Text": "Intervention sur tout le Maroc — tertiaire, industriel, commercial et public.",
+    "trust2Title": "De l'étude à la pose",
+    "trust2Text": "Implantation, spécifications, fabrication et pose par des équipes spécialisées.",
+    "trust3Title": "Performance mesurable",
+    "trust3Text": "Acoustique (Rw), coupe-feu, accès réseaux et finitions adaptées au cahier des charges.",
+    "trust4Title": "Réponse sous 24/48h",
+    "trust4Text": "Un interlocuteur unique pour votre devis et le suivi jusqu'à la réception.",
+    "aboutPoint1": "Systèmes modulaires adaptés aux environnements tertiaires et industriels",
+    "aboutPoint2": "Cohérence entre cloisons, plafonds, planchers et portes pour la performance globale",
+    "aboutPoint3": "Second œuvre et clés en main disponibles lorsque le périmètre s'élargit",
+    "coreEyebrow": "Expertise",
+    "coreLead": "Quatre spécialités structurantes — documentées, posées et garanties sur tout le territoire.",
+    "core1Detail": "Vitrée, pleine, toute hauteur, bord à bord, couvre-joint, parclose, coupe-feu, acoustique",
+    "core2Detail": "Rw, salles de réunion, open space, zones confidentielles — enveloppe complète",
+    "core3Detail": "Absorption, incendie, humidité, accès réseaux — finitions professionnelles",
+    "core4Detail": "Planchers surélevés, câblage, finitions moquette / PVC / parquet / époxy",
+    "sectorEyebrow": "Applications",
+    "sectorLead": "Des systèmes pensés pour les contraintes réelles des espaces de travail et des sites techniques.",
+    "finishesEyebrow": "Gamme",
+    "finishesLead": "Huit familles de finitions et systèmes pour répondre à l'architecture, à l'acoustique et à la sécurité.",
+    "secondaryEyebrow": "Complément",
+    "portfolioEyebrow": "Réalisations",
+    "portfolioLead": "Extraits de projets : cloisons, acoustique, plafonds techniques et planchers sur sites professionnels.",
+    "portfolioLabel1": "Cloison vitrée — tertiaire",
+    "portfolioLabel2": "Hall & accueil",
+    "portfolioLabel3": "Open space modulaire",
+    "portfolioLabel4": "Plafond technique",
+    "portfolioLabel5": "Plancher technique",
+    "portfolioLabel6": "Cloison industrielle",
+    "portfolioLabel7": "Détail bord à bord",
+    "portfolioLabel8": "Circulation de bureaux"
   },
   "services": {
     "metaTitle": "Expertise technique — Cloisons, acoustique & systèmes au Maroc",
@@ -216,7 +251,24 @@
     "ctaText": "Décrivez votre projet — nous avons très certainement le système de cloison, d'acoustique, de plafond ou de plancher qui vous convient. Réponse sous 24h.",
     "ctaButton": "Demander un devis",
     "breadcrumbHome": "Accueil",
-    "breadcrumbCurrent": "Expertise technique"
+    "breadcrumbCurrent": "Expertise technique",
+    "overviewEyebrow": "Vue d'ensemble",
+    "overviewLead": "Une offre technique structurée autour de quatre spécialités, avec des services d'aménagement en complément.",
+    "overview1Title": "Cloisons",
+    "overview1Text": "Systèmes amovibles pour bureaux et industrie — lumière, modularité, sécurité.",
+    "overview2Title": "Acoustique",
+    "overview2Text": "Performance Rw via cloisons, plafonds, planchers et portes associés.",
+    "overview3Title": "Plafonds",
+    "overview3Text": "Suspendus techniques : acoustique, incendie, humidité, accès réseaux.",
+    "overview4Title": "Plancher",
+    "overview4Text": "Planchers surélevés et finitions pour câblage et espaces modulaires.",
+    "sectorsLead": "Deux familles d'environnement — mêmes exigences de qualité et de pose.",
+    "partitionsEyebrow": "Spécialité principale",
+    "partitionTypesLead": "Chaque système répond à un usage précis : transparence, intimité, acoustique ou résistance au feu.",
+    "acousticEyebrow": "Performance système",
+    "ceilingsEyebrow": "Enveloppe technique",
+    "floorsEyebrow": "Infrastructure",
+    "secondaryEyebrow": "Autour du cœur technique"
   },
   "about": {
     "metaTitle": "À propos de nous — Inside Factory Maroc",
@@ -255,7 +307,16 @@
     "value4Text": "Réduire notre impact social et environnemental — matériaux et procédés qui allient esthétique et durabilité.",
     "cta": "Demander un devis gratuit",
     "breadcrumbHome": "Accueil",
-    "breadcrumbCurrent": "À propos de nous"
+    "breadcrumbCurrent": "À propos de nous",
+    "methodTitle": "Notre méthode de travail",
+    "methodLead": "Une démarche claire, du premier brief à la réception du chantier.",
+    "method1Title": "Écouter & spécifier",
+    "method1Text": "Analyse du site, contraintes acoustiques, incendie et réseaux — cahier des charges précis.",
+    "method2Title": "Concevoir & fabriquer",
+    "method2Text": "Sélection indépendante des systèmes, plans 2D/3D et coordination technique.",
+    "method3Title": "Poser & garantir",
+    "method3Text": "Équipes spécialisées, contrôle qualité et SAV réactif après réception.",
+    "sectorsLead": "Nous accompagnons des projets dans des secteurs très variés, partout au Maroc."
   },
   "contact": {
     "metaTitle": "Contactez-nous — Devis cloisons & systèmes techniques",
@@ -283,7 +344,10 @@
     "successText": "Merci. Nous vous recontacterons rapidement.",
     "siteAlt": "Chantier Inside Factory",
     "breadcrumbHome": "Accueil",
-    "breadcrumbCurrent": "Contactez-nous"
+    "breadcrumbCurrent": "Contactez-nous",
+    "formLead": "Indiquez le type d'espace, la surface approximative et vos contraintes techniques — nous revenons vers vous rapidement.",
+    "assuranceTitle": "Ce que vous pouvez attendre",
+    "assuranceText": "Un devis clair, un interlocuteur unique, et une réponse technique adaptée à votre cahier des charges (cloisons, acoustique, plafonds ou plancher)."
   },
   "faq": {
     "metaTitle": "FAQ — Questions fréquentes",
@@ -307,7 +371,11 @@
     "ctaText": "Contactez-nous — nous répondons rapidement.",
     "ctaButton": "Contactez-nous",
     "breadcrumbHome": "Accueil",
-    "breadcrumbCurrent": "FAQ"
+    "breadcrumbCurrent": "FAQ",
+    "faq7Q": "L'acoustique dépend-elle uniquement des cloisons ?",
+    "faq7A": "Non. La performance acoustique est un système : cloisons, plafonds techniques, plancher et portes doivent être spécifiés ensemble pour atteindre l'isolation (Rw) attendue.",
+    "faq8Q": "Proposez-vous uniquement des systèmes techniques ?",
+    "faq8A": "Notre cœur de métier reste les cloisons amovibles, l'acoustique, les plafonds techniques et le plancher technique. Le second œuvre et les projets clés en main sont proposés en complément lorsque le périmètre le nécessite."
   },
   "seo": {
     "knowsAbout": [
@@ -336,6 +404,10 @@
     "serviceTurnkeyName": "Projets clés en main",
     "serviceTurnkeyDesc": "Conception & réalisation en service complémentaire : du concept à la pose autour de notre cœur technique au Maroc.",
     "serviceType": "Cloisons amovibles et systèmes techniques",
-    "availableLanguage": ["Français", "Anglais", "Arabe"]
+    "availableLanguage": [
+      "Français",
+      "Anglais",
+      "Arabe"
+    ]
   }
 }

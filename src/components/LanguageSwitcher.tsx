@@ -6,9 +6,10 @@ import { localeNames, locales, type Locale } from "@/i18n/routing";
 
 type Props = {
   variant?: "compact" | "menu";
+  onDark?: boolean;
 };
 
-export function LanguageSwitcher({ variant = "compact" }: Props) {
+export function LanguageSwitcher({ variant = "compact", onDark = false }: Props) {
   const locale = useLocale() as Locale;
   const pathname = usePathname();
   const router = useRouter();
@@ -21,26 +22,31 @@ export function LanguageSwitcher({ variant = "compact" }: Props) {
       role="navigation"
       aria-label="Language"
     >
-      {locales.map((code) => (
-        <button
-          key={code}
-          type="button"
-          onClick={() => router.replace(pathname, { locale: code })}
-          className={`touch-target rounded-sm uppercase tracking-wide transition-colors ${
-            isMenu
-              ? "px-4 py-2 text-sm"
-              : "px-2.5 py-1.5 text-[0.65rem]"
-          } ${
-            locale === code
-              ? "text-steel-bright"
-              : "text-steel-dim hover:text-steel"
-          }`}
-          aria-current={locale === code ? "true" : undefined}
-        >
-          {code === "ar" ? "ع" : code.toUpperCase()}
-          <span className="sr-only">{localeNames[code]}</span>
-        </button>
-      ))}
+      {locales.map((code) => {
+        const active = locale === code;
+        return (
+          <button
+            key={code}
+            type="button"
+            onClick={() => router.replace(pathname, { locale: code })}
+            className={`touch-target uppercase tracking-wide transition-colors ${
+              isMenu ? "px-4 py-2 text-sm" : "px-2.5 py-1.5 text-[0.65rem]"
+            } ${
+              active
+                ? onDark
+                  ? "on-media font-semibold"
+                  : "font-semibold text-accent"
+                : onDark
+                  ? "on-media-soft hover:!text-white"
+                  : "text-ink-faint hover:text-ink"
+            }`}
+            aria-current={active ? "true" : undefined}
+          >
+            {code === "ar" ? "ع" : code.toUpperCase()}
+            <span className="sr-only">{localeNames[code]}</span>
+          </button>
+        );
+      })}
     </div>
   );
 }

@@ -135,7 +135,42 @@
     "ctaTitle": "Need advice or a quote for partitions or technical systems?",
     "ctaText": "Partitions, acoustics, technical ceilings or raised floors — an Inside Factory expert replies within 24h.",
     "ctaButton": "Contact us",
-    "ctaAlt": "Office corridor with demountable partitions by Inside Factory"
+    "ctaAlt": "Office corridor with demountable partitions by Inside Factory",
+    "pillarsEyebrow": "Core expertise",
+    "pillarsTitle": "Four technical specialties, one standard of quality",
+    "pillarsLead": "Movable partitions, acoustics, technical ceilings and raised access floors — designed, supplied and installed for high-performing workplaces.",
+    "trust1Title": "Nationwide coverage",
+    "trust1Text": "Projects across Morocco — office, industrial, commercial and public environments.",
+    "trust2Title": "From study to install",
+    "trust2Text": "Layout planning, specifications, supply and installation by specialized teams.",
+    "trust3Title": "Measurable performance",
+    "trust3Text": "Acoustics (Rw), fire resistance, service access and finishes aligned to your brief.",
+    "trust4Title": "Reply within 24/48h",
+    "trust4Text": "One dedicated contact for your quotation and follow-up through handover.",
+    "aboutPoint1": "Modular systems for office and industrial environments",
+    "aboutPoint2": "Coordinated partitions, ceilings, floors and doors for overall performance",
+    "aboutPoint3": "Fit-out and turnkey delivery available when the scope expands",
+    "coreEyebrow": "Expertise",
+    "coreLead": "Four defining specialties — specified, installed and supported nationwide.",
+    "core1Detail": "Glazed, solid, full-height, edge-to-edge, cover strip, bead, fire-rated, acoustic",
+    "core2Detail": "Rw performance, meeting rooms, open plan, confidential zones — full envelope",
+    "core3Detail": "Absorption, fire rating, humidity resistance, service access — professional finishes",
+    "core4Detail": "Raised floors, cable management, carpet / PVC / wood / epoxy finishes",
+    "sectorEyebrow": "Applications",
+    "sectorLead": "Systems engineered for the real constraints of workplaces and technical sites.",
+    "finishesEyebrow": "Range",
+    "finishesLead": "Eight finish and system families to meet architectural, acoustic and safety needs.",
+    "secondaryEyebrow": "Complementary",
+    "portfolioEyebrow": "Projects",
+    "portfolioLead": "Selected work: partitions, acoustics, technical ceilings and floors on professional sites.",
+    "portfolioLabel1": "Glazed partition — offices",
+    "portfolioLabel2": "Lobby & reception",
+    "portfolioLabel3": "Modular open plan",
+    "portfolioLabel4": "Technical ceiling",
+    "portfolioLabel5": "Raised access floor",
+    "portfolioLabel6": "Industrial partition",
+    "portfolioLabel7": "Edge-to-edge detail",
+    "portfolioLabel8": "Office circulation"
   },
   "services": {
     "metaTitle": "Technical expertise — Partitions, acoustics & systems in Morocco",
@@ -216,7 +251,24 @@
     "ctaText": "Describe your project — we almost certainly have the partition, acoustic, ceiling or floor system that suits you. Reply within 24h.",
     "ctaButton": "Request a quote",
     "breadcrumbHome": "Home",
-    "breadcrumbCurrent": "Technical expertise"
+    "breadcrumbCurrent": "Technical expertise",
+    "overviewEyebrow": "Overview",
+    "overviewLead": "A structured technical offer built around four specialties, with complementary fit-out services.",
+    "overview1Title": "Partitions",
+    "overview1Text": "Movable systems for offices and industry — light, modularity, safety.",
+    "overview2Title": "Acoustics",
+    "overview2Text": "Rw performance through coordinated partitions, ceilings, floors and doors.",
+    "overview3Title": "Ceilings",
+    "overview3Text": "Technical suspended ceilings: acoustics, fire, humidity, service access.",
+    "overview4Title": "Floors",
+    "overview4Text": "Raised access floors and finishes for cabling and modular layouts.",
+    "sectorsLead": "Two environment families — the same quality and installation standards.",
+    "partitionsEyebrow": "Primary specialty",
+    "partitionTypesLead": "Each system serves a precise need: transparency, privacy, acoustics or fire resistance.",
+    "acousticEyebrow": "System performance",
+    "ceilingsEyebrow": "Technical envelope",
+    "floorsEyebrow": "Infrastructure",
+    "secondaryEyebrow": "Around the technical core"
   },
   "about": {
     "metaTitle": "About us — Inside Factory Morocco",
@@ -255,7 +307,16 @@
     "value4Text": "Reduce our social and environmental impact — materials and processes that combine aesthetics with sustainability.",
     "cta": "Request a free quote",
     "breadcrumbHome": "Home",
-    "breadcrumbCurrent": "About us"
+    "breadcrumbCurrent": "About us",
+    "methodTitle": "How we work",
+    "methodLead": "A clear process from the first brief to site handover.",
+    "method1Title": "Listen & specify",
+    "method1Text": "Site analysis, acoustic, fire and services constraints — a precise brief.",
+    "method2Title": "Design & supply",
+    "method2Text": "Independent system selection, 2D/3D drawings and technical coordination.",
+    "method3Title": "Install & support",
+    "method3Text": "Specialized crews, quality control and responsive after-sales support.",
+    "sectorsLead": "We support projects across a wide range of sectors, nationwide in Morocco."
   },
   "contact": {
     "metaTitle": "Contact us — Quote for partitions & technical systems",
@@ -283,7 +344,10 @@
     "successText": "Thank you. We will get back to you shortly.",
     "siteAlt": "Inside Factory site work",
     "breadcrumbHome": "Home",
-    "breadcrumbCurrent": "Contact us"
+    "breadcrumbCurrent": "Contact us",
+    "formLead": "Share the space type, approximate area and technical constraints — we will get back to you promptly.",
+    "assuranceTitle": "What to expect",
+    "assuranceText": "A clear quotation, a single point of contact, and technical guidance tailored to your brief (partitions, acoustics, ceilings or floors)."
   },
   "faq": {
     "metaTitle": "FAQ — Frequently asked questions",
@@ -307,7 +371,11 @@
     "ctaText": "Contact us — we reply quickly.",
     "ctaButton": "Contact us",
     "breadcrumbHome": "Home",
-    "breadcrumbCurrent": "FAQ"
+    "breadcrumbCurrent": "FAQ",
+    "faq7Q": "Does acoustics depend only on partitions?",
+    "faq7A": "No. Acoustic performance is a system: partitions, technical ceilings, floors and doors must be specified together to reach the required sound insulation (Rw).",
+    "faq8Q": "Do you only offer technical systems?",
+    "faq8A": "Our core remains movable partitions, acoustics, technical ceilings and raised floors. Fit-out and turnkey projects are available as complementary services when the scope requires it."
   },
   "seo": {
     "knowsAbout": [
@@ -336,6 +404,10 @@
     "serviceTurnkeyName": "Turnkey projects",
     "serviceTurnkeyDesc": "Design & build as a complementary service: from concept to installation around our technical core in Morocco.",
     "serviceType": "Demountable partitions and technical systems",
-    "availableLanguage": ["French", "English", "Arabic"]
+    "availableLanguage": [
+      "French",
+      "English",
+      "Arabic"
+    ]
   }
 }

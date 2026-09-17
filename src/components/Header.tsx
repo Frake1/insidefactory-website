@@ -41,12 +41,14 @@ export function Header() {
     setOpen(false);
   }
 
+  const solid = scrolled || open;
+
   return (
     <>
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ease-out ${
-          scrolled || open
-            ? "border-b border-steel/10 bg-ink/95"
+          solid
+            ? "border-b border-line bg-surface/95 backdrop-blur-md"
             : "bg-transparent"
         }`}
         style={{ paddingTop: "env(safe-area-inset-top)" }}
@@ -58,25 +60,35 @@ export function Header() {
               alt={t("logoAlt")}
               width={200}
               height={164}
-              className="h-11 w-auto object-contain sm:h-14 md:h-16 lg:h-[4.25rem]"
+              className={`h-11 w-auto object-contain transition-[filter] duration-300 sm:h-14 md:h-16 lg:h-[4.25rem] ${
+                solid ? "brightness-0" : ""
+              }`}
               priority
             />
           </Link>
 
-          <nav className="hidden items-center gap-5 xl:flex xl:gap-8">
+          <nav className="hidden items-center gap-5 xl:flex xl:gap-7">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="font-sans text-[0.7rem] uppercase tracking-wide text-steel-muted transition-colors duration-300 hover:text-steel-bright"
+                className={`font-sans text-[0.7rem] font-medium uppercase tracking-wide transition-colors duration-300 ${
+                  solid
+                    ? "text-ink-muted hover:text-ink"
+                    : "on-media-muted hover:!text-white"
+                }`}
               >
                 {link.label}
               </Link>
             ))}
-            <LanguageSwitcher />
+            <LanguageSwitcher onDark={!solid} />
             <Link
               href="/contact"
-              className="border border-steel/35 px-5 py-2.5 font-sans text-[0.7rem] uppercase tracking-wide text-steel transition-all duration-300 hover:border-steel hover:bg-steel/10 hover:text-steel-bright"
+              className={`border px-5 py-2.5 font-sans text-[0.7rem] font-medium uppercase tracking-wide shadow-btn transition-all duration-300 hover:-translate-y-0.5 hover:shadow-btn-hover ${
+                solid
+                  ? "border-accent bg-accent text-white hover:bg-accent-hover"
+                  : "border-white/55 bg-white/10 text-white backdrop-blur-sm hover:border-white hover:bg-white/20"
+              }`}
             >
               {t("cta")}
             </Link>
@@ -90,19 +102,19 @@ export function Header() {
             onClick={() => setOpen((v) => !v)}
           >
             <span
-              className={`block h-px w-6 bg-steel transition-transform duration-300 ${
-                open ? "translate-y-[4px] rotate-45" : ""
-              }`}
+              className={`block h-px w-6 transition-transform duration-300 ${
+                solid ? "bg-ink" : "bg-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.55)]"
+              } ${open ? "translate-y-[4px] rotate-45" : ""}`}
             />
             <span
-              className={`block h-px w-6 bg-steel transition-opacity duration-300 ${
-                open ? "opacity-0" : ""
-              }`}
+              className={`block h-px w-6 transition-opacity duration-300 ${
+                solid ? "bg-ink" : "bg-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.55)]"
+              } ${open ? "opacity-0" : ""}`}
             />
             <span
-              className={`block h-px w-6 bg-steel transition-transform duration-300 ${
-                open ? "-translate-y-[4px] -rotate-45" : ""
-              }`}
+              className={`block h-px w-6 transition-transform duration-300 ${
+                solid ? "bg-ink" : "bg-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.55)]"
+              } ${open ? "-translate-y-[4px] -rotate-45" : ""}`}
             />
           </button>
         </div>
@@ -118,12 +130,12 @@ export function Header() {
           <button
             type="button"
             aria-label={t("closeMenu")}
-            className="absolute inset-0 bg-ink/80"
+            className="absolute inset-0 bg-ink/40"
             onClick={closeMenu}
           />
 
           <div
-            className="absolute inset-x-0 bottom-0 overflow-y-auto bg-ink"
+            className="absolute inset-x-0 bottom-0 overflow-y-auto bg-surface shadow-lift"
             style={{
               top: "calc(4rem + env(safe-area-inset-top))",
               paddingBottom: "env(safe-area-inset-bottom)",
@@ -135,7 +147,7 @@ export function Header() {
                   key={link.href}
                   href={link.href}
                   onClick={closeMenu}
-                  className="border-b border-steel/10 py-5 font-display text-2xl tracking-wide text-steel-bright transition-colors hover:text-steel sm:text-3xl"
+                  className="border-b border-line py-5 font-display text-2xl tracking-wide text-ink transition-colors hover:text-accent sm:text-3xl"
                 >
                   {link.label}
                 </Link>
@@ -143,14 +155,12 @@ export function Header() {
               <Link
                 href="/contact"
                 onClick={closeMenu}
-                className="mt-8 inline-flex min-h-[3rem] w-full items-center justify-center bg-steel px-6 py-3 text-xs uppercase tracking-wide text-ink transition-colors hover:bg-steel-bright sm:w-fit"
+                className="btn-primary mt-8 w-full sm:w-fit"
               >
                 {t("cta")}
               </Link>
-              <div className="mt-10 border-t border-steel/10 pt-8">
-                <p className="mb-3 text-[0.65rem] uppercase tracking-wide text-steel-dim">
-                  {t("language")}
-                </p>
+              <div className="mt-10 border-t border-line pt-8">
+                <p className="eyebrow mb-3">{t("language")}</p>
                 <LanguageSwitcher variant="menu" />
               </div>
             </nav>

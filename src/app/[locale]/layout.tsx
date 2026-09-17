@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Noto_Sans_Arabic, Outfit } from "next/font/google";
+import { Manrope, Newsreader, Noto_Sans_Arabic } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
@@ -19,16 +19,16 @@ import { absoluteAssetUrl, assetPath } from "@/lib/assets";
 import { absoluteUrl, getLocaleAlternates, siteConfig } from "@/lib/site";
 import "../globals.css";
 
-const display = Cormorant_Garamond({
+const display = Newsreader({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   variable: "--font-display",
   display: "swap",
 });
 
-const sans = Outfit({
+const sans = Manrope({
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-sans",
   display: "swap",
 });
@@ -147,7 +147,7 @@ export default async function LocaleLayout({
       className={`${display.variable} ${sans.variable} ${arabic.variable}`}
     >
       <body
-        className={`min-h-screen bg-ink text-steel-bright antialiased ${
+        className={`min-h-screen bg-paper text-ink antialiased ${
           isRtl ? "font-arabic" : "font-sans"
         }`}
       >
